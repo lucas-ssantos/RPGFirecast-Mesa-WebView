@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title id="titlePag">Nome da Mesa - FIRECAST</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+  <link rel="manifest" href="img/icon/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+	body{
+		background-color: #212121;
+		color: #dddddd;
+	}
+	
+	.nav-up{
+		padding-bottom: 15px;
+	}
+	
+	.icon-down{
+		padding-top: 15px;
+	}
+	
+	.card-mesa{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 10px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		background-size: 100% 100%;
+		background-color: #272727;
+	}
+	
+	.padding-card-mesa{
+		background: rgb(39,39,39);
+		background: -moz-linear-gradient(90deg, rgba(39,39,39,1) 0%, rgba(39,39,39,1) 50%, rgba(0,0,0,0) 100%);
+		background: -webkit-linear-gradient(90deg, rgba(39,39,39,1) 0%, rgba(39,39,39,1) 50%, rgba(0,0,0,0) 100%);
+		background: linear-gradient(90deg, rgba(39,39,39,1) 0%, rgba(39,39,39,1) 50%, rgba(0,0,0,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272727",endColorstr="#000000",GradientType=1);
+		border-radius: 10px;
+		padding-top: 15px;
+		padding-bottom: 10px;
+	}
+	
+	.extra-division-bottom{
+		margin-bottom: 10px;
+	}
+	
+	.card{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	.bottom-card{
+		background-color: #272727;
+		border-radius: 10px;
+	}
+	
+	.mesa-item{
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+	
+	.btnPlayer{
+		background-color: transparent;
+		border-radius: 5px;
+		border: 2px solid #cd3143;
+		transition-duration: 0.4s;
+		cursor: pointer;
+	}
+	
+	.button1:hover {
+		background-color: #cd3143;
+	}
+	
+	.tag{
+		border-radius: 5px;
+		background-color: #54ab58;
+		padding-left: 7px;
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+	
+	.extra{
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	
+	.mesa{
+		margin-top: 5px;
+	}
+	
+	/* Remove the navbar's default margin-bottom and rounded borders */ 
+    .header {
+		background-color: #161616;
+		margin-bottom: 0;
+		border-radius: 0;
+    }
+	
+	.vertical-align{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.img-responsive {
+		border-radius: 10px;
+		padding: 3px;
+	}
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #cd3143;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+	  
+	  
+    }
+	
+	
+	/* MODAL */
+	/* FUNDO FORA DO MODAL */
+	.modal {
+	  display: none;
+	  position: fixed;
+	  z-index: 1;
+	  padding-top: 100px;
+	  left: 0;
+	  top: 0;
+	  width: 100%;
+	  height: 100%;
+	  overflow: auto;
+	  background-color: rgb(0,0,0);
+	  background-color: rgba(0,0,0,0.4);
+	  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	/* CONTEUDO DO MODAL */
+	.modal-content {
+	  background-color: #272727;
+	  margin: auto;
+	  padding: 20px;
+	  width: 80%;
+	}
+
+	/* BOTÃO DE FECHAR */
+	.close {
+	  color: white;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.h2-modal{
+		margin-top: 5px;
+		margin-bottom: 0px;
+	}
+	
+	.hr-modal{
+		border-top: 1px solid white;
+		border-radius: 5px;
+	}
+
+	.close:hover,
+	.close:focus {
+	  color: white;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.italico
+	{
+		font-style: italic;
+	}
+	
+	.lock{
+		color: #dddddd;
+		font-size:25px;
+		margin-top:8px;
+	}
+	
+	.bolinha{
+		color: #dddddd;
+		font-size:25px;
+		margin-top:8px;
+	};
+	
+  </style>
+ 
+</head>
+<body>
+
+	<!-- FAIXA NAV -->
+	<div class="container-fluid">
+		<div class="row header">
+			<div class="col-sm-1 text-center icon-down">
+				<img src="img/logo.png" class="img-responsive" width="50" height="50" alt="Logo" />
+			</div>
+			<div class="col-sm-11 text-left nav-up">
+				<h1>Visualização de Mesa</h1>
+			</div>
+		</div>
+	</div>
+	
+	<!-- CONTEUDO MESA -->
+	<div class="container-fluid">    
+		<div class="row">
+			<!-- COLUNA ESQUERDA -->
+			<div class="col-sm-2">
+			  
+			</div>
+			<!-- CARD DA MESA -->
+			<div class="col-sm-8 card-mesa" id="imgCapa">
+				<div class="row padding-card-mesa">
+					<div class="col-sm-12">
+						<div class="row extra-division-bottom">
+							<div class="col-sm-4 text-center">
+								<img src="img/mesa.png" class="img-responsive rounded mesa" width="500" height="500" id="imgMesa" alt="Imagem da Mesa"/>
+							</div>
+							<div class="col-sm-8 text-left">
+								<div class="row">
+									<div class="col-sm-12 text-left">
+										<h1 id="nomeMesa">NOME MESA</h1>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12 text-left">
+										<h3 class="mesa-item" id="sistema">SISTEMA</h3>
+										<h3 class="mesa-item" id="sistemaDesc">DESC SISTEMA</h3>
+										<h3 class="mesa-item" id="status">STATUS</h3>
+										<h3 class="mesa-item" id="dono">CRIADO POR: NICK</h3>
+										<h3 class="mesa-item" >SITE: <a id="site" href="" target="new" >LINK</a></h3>
+										<div>
+											<button id="playersOn" class="btnPlayer">
+												<h3 class="mesa-item" id="qntJogador">QNT. JOGADORES ON</h3>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- TAGS -->
+						<div class="row" class="extra" id="row-tags-1">
+							<div class="col-sm-3 text-left" >
+								<h4 class="tag" id="tag0">TAG 01</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag1">TAG 02</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag2">TAG 03</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag3">TAG 04</h4>
+							</div>
+						</div>
+						<div class="row" class="extra" id="row-tags-2">
+							<div class="col-sm-3 text-left" >
+								<h4 class="tag" id="tag4">TAG 05</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag5">TAG 06</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag6">TAG 07</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag7">TAG 08</h4>
+							</div>
+						</div>
+						<div class="row" class="extra" id="row-tags-3">
+							<div class="col-sm-3 text-left" >
+								<h4 class="tag" id="tag8">TAG 09</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag9">TAG 10</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag10">TAG 11</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag11">TAG 12</h4>
+							</div>
+						</div>
+						<div class="row" class="extra" id="row-tags-4">
+							<div class="col-sm-3 text-left" >
+								<h4 class="tag" id="tag12">TAG 13</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag13">TAG 14</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag14">TAG 15</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag15">TAG 16</h4>
+							</div>
+						</div>
+						<div class="row" class="extra" id="row-tags-5">
+							<div class="col-sm-3 text-left" >
+								<h4 class="tag" id="tag16">TAG 17</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								<h4 class="tag" id="tag17">TAG 18</h4>
+							</div>
+							<div class="col-sm-3 text-left">
+								
+							</div>
+							<div class="col-sm-3 text-left">
+								
+							</div>
+						</div>
+						<!-- MESTRE ONLINE -->
+						<div class="row" class="extra">
+							<div class="col-sm-1 text-right" >
+								<i class="fa fa-circle bolinha" id="bolinha" aria-hidden="true"></i>
+							</div>
+							<div class="col-sm-11 text-left" id="mestreOn">
+								<h4 id="textoMestre">Mestre Offline</h4>
+							</div>
+						</div>
+						<!-- SENHA -->
+						<div class="row" class="extra" id="senha">
+							<div class="col-sm-1 text-right" >
+								<i class="fa fa-lock lock" aria-hidden="true"></i>
+							</div>
+							<div class="col-sm-11 text-left" >
+								<h4>Requer senha</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- COLUNA DIREITA -->
+			<div class="col-sm-2">
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- CONTEUDO BOAS-VINDAS -->
+	<div class="container-fluid">    
+		<div class="row boas-vindas">
+			<!-- COLUNA DIREITA -->
+			<div class="col-sm-2">
+			  
+			</div>
+			<!-- CARD BOAS-VINDAS -->
+			<div class="col-sm-8 card">
+				<div class="row bottom-card">
+					<div class="col-sm-12 text-left">
+						<h2>Boas-Vindas</h2>
+						<p id="boasVindas"></p>
+					</div>
+				</div>
+			</div>
+			<!-- COLUNA ESQUERDA -->
+			<div class="col-sm-2">
+
+			</div>
+		</div>
+	</div>
+
+	<footer class="container-fluid text-center">
+	  <p>@2021 FIRECAST - RPG DE MESA ONLINE </p>
+	</footer>
+	
+	<!-- MODAL -->
+	<div id="playerModal" class="modal container-fluid text-left">
+		<div class="modal-content" >
+			<div class="row">
+				<!-- TÍTULO MODAL -->
+				<div class="col-sm-11">
+					<h2 class="h2-modal">Jogadores Online: </h2>
+				</div>
+				<div class="col-sm-1">
+					<span class="close">&times;</span>
+				</div>
+			</div>
+			<div class="row">
+				<!-- LISTA DE JOGADORES -->
+				<div class="col-sm-12" id="listaJogadores">
+					<hr class="hr-modal">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		// MODAL
+		var modal = document.getElementById("playerModal");
+		// BUTÃO PARA ABRIR
+		var btn = document.getElementById("playersOn");
+		// SPAN QUE FECHA
+		var span = document.getElementsByClassName("close")[0];
+
+		// ABRIR
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+
+		// FECHAR
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		// FECHAR QUANDO CLICA FORA
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+	</script>
+	
+	<script>
+		
+		//TROCAR
+		function Trocar(id, vlr, tipo)
+		{	
+			switch (tipo)
+			{
+				case 'texto':
+					var elemento = document.getElementById(id);
+					elemento.innerText = vlr;
+					break;
+				
+				case 'dono':
+					var elemento = document.getElementById(id);
+					elemento.innerText = "CRIADO POR: " + vlr;
+				
+				case 'site':
+					var elemento = document.getElementById(id);
+					elemento.href = vlr;
+					break;
+				
+				case 'img':
+					if(vlr == null)
+					{
+						vlr = "";
+					}
+					
+					var elemento = document.getElementById(id);
+					elemento.src = vlr;
+					break;
+				
+				case 'imgCapa':
+					if(vlr == null)
+					{
+						vlr = "";
+					}
+				
+					var elemento = document.getElementById(id);
+					elemento.style.backgroundImage = "url(" + vlr + ")";
+					break;
+				
+				case 'qntJogador':
+					var elemento = document.getElementById(id);
+					elemento.innerText = vlr + " jogadores online";
+					break;
+					
+				case 'boasVindas':
+					var elemento = document.getElementById(id);
+					elemento.innerText = vlr;
+					break;
+				
+			
+			}
+		}
+		
+		function Tags(vlr, rows, length)
+		{
+			var elemento;
+			var id;
+			
+			if(rows >= 5)
+			{
+				elemento = document.getElementById("row-tags-5");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-4");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-3");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-2");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-1");
+				elemento.style.display = "block";
+			}
+			else if(rows >= 4)
+			{
+				elemento = document.getElementById("row-tags-5");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-4");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-3");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-2");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-1");
+				elemento.style.display = "block";
+			}
+			else if(rows >= 3)
+			{
+				elemento = document.getElementById("row-tags-5");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-4");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-3");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-2");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-1");
+				elemento.style.display = "block";
+			}
+			else if(rows >= 2)
+			{
+				elemento = document.getElementById("row-tags-5");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-4");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-3");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-2");
+				elemento.style.display = "block";
+				elemento = document.getElementById("row-tags-1");
+				elemento.style.display = "block";
+			}
+			else
+			{
+				elemento = document.getElementById("row-tags-5");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-4");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-3");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-2");
+				elemento.style.display = "none";
+				elemento = document.getElementById("row-tags-1");
+				elemento.style.display = "block";
+			}
+			
+			for(var i=0; i<18; i++)
+			{
+				id = "tag"+i;
+				var elemento = document.getElementById(id);
+				
+				if(i < length)
+				{
+					elemento.style.display = "block";
+					elemento.innerText = vlr[i];
+				}
+				else
+				{
+					elemento.style.display = "none";
+				}
+				
+			}
+		}
+		
+		function MestreOn(mestrePronome)
+		{
+			var elemento = document.getElementById("bolinha");
+			elemento.style.display = "#54ab58";
+			
+			elemento = document.getElementById("mestreOn");
+			elemento.innerText = mestrePronome + "online"
+			elemento.style.backgroundColor = "#54ab58";
+		}
+		
+		//FUNÇÃO MESTRE ONLINE
+		function MestreOn(bool, mestrePronome)
+		{
+			var bolinha = document.getElementById("bolinha");
+			var textoMestre = document.getElementById("metsreOn");
+		
+			if(bool)
+			{
+				var element = document.getElementById("textoMestre")
+				element.innerText = mestrePronome + " online";
+				element.style.color = "#54ab58";
+				bolinha.style.color = '#54ab58';
+			}
+			else
+			{
+				var element = document.getElementById("textoMestre")
+				element.innerText = "Mestre offline";
+				element.style.color = "#dddddd";
+				bolinha.style.color = '#dddddd';
+			}
+		}
+		
+		//FUNÇÃO REQUER SENHA
+		function Senha(bool)
+		{
+			var senha = document.getElementById("senha");
+		
+			if(bool)
+			{
+				senha.style.display = "block";
+			}
+			else
+			{
+				senha.style.display = "none";
+			}
+		}
+		
+		function JogadoresOnline(length, jogadores)
+		{
+			if(length > 0)
+			{
+			
+				if(jogadores[0] == "")
+				{
+					console.log("vazio");
+					document.getElementById('listaJogadores').innerHTML = "<h3 class='mesa-item italico'>Não há jogadores online</h3>";
+				}
+				else
+				{
+					document.getElementById('listaJogadores').innerHTML = "";
+					for(var i=0; i < length; i++)
+					{
+						document.getElementById('listaJogadores').innerHTML += "<h3 class='mesa-item'>" + jogadores[i] + "</h3>";
+					}
+				}
+			}
+			else
+			{
+				document.getElementById('listaJogadores').innerHTML = "<h3 class='mesa-item italico'>Não há jogadores online</h3>";
+			}
+		}
+
+		//FUNÇÃO PREENCHER
+		function PreencherDados(imgMesa, imgCapa, nomeMesa, sistema, sistemaDesc, status, dono, site, qntJogadores, tags, playersOn, mestreOn, mestrePronome, senha, boasVindas)
+		{
+			Trocar("imgMesa",imgMesa,"img");
+			Trocar("imgCapa",imgCapa,"imgCapa");
+			Trocar("nomeMesa",nomeMesa,"texto");
+			Trocar("sistema",sistema,"texto");
+			Trocar("sistemaDesc",sistemaDesc,"texto");
+			Trocar("status",status,"texto");
+			Trocar("dono",dono,"dono");
+			Trocar("site",site,"site");
+			Trocar("qntJogador",qntJogadores,"qntJogador");
+			Trocar("boasVindas",boasVindas,"boasVindas");
+			
+			var elemento = document.getElementById("titlePag");
+			elemento.innerText = nomeMesa + " - Firecast";
+			
+			let length = tags.length;
+			
+			if(length >= 1 && tags[0] != null)
+			{
+				
+				if(length >= 17)
+				{
+					Tags(tags, 5, length);
+				}
+				else if(length >= 13)
+				{
+					Tags(tags, 4, length);
+				}
+				else if(length >= 9)
+				{
+					Tags(tags, 3, length);
+				}
+				else if(length >= 5)
+				{
+					Tags(tags, 2, length);
+				}
+				else
+				{
+					Tags(tags, 1, length);
+				}
+			}
+			else
+			{
+				for(var i=1;i>6;i++)
+				{
+					var id = "row-tags-" + i;
+					var elemento = document.getElementById(id);
+					elemento.style.display = "none";
+				}
+			}
+			
+			if(mestreOn)
+			{
+				MestreOn(mestreOn, mestrePronome);
+			}
+			
+			Senha(senha);
+			
+			length = playersOn.length;
+			JogadoresOnline(length, playersOn);
+
+		}
+		
+	</script>
+	
+</body>
+</html>
